@@ -5,8 +5,9 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {PanelModule} from 'primeng/panel';
 import {ButtonModule} from 'primeng/button';
 import {CardModule} from 'primeng/card';
-
-
+import {RippleModule} from 'primeng/ripple';
+import {MenubarModule} from 'primeng/menubar';
+import {InputTextModule} from 'primeng/inputtext';
 @NgModule({
   declarations: [
     
@@ -16,7 +17,10 @@ import {CardModule} from 'primeng/card';
     ProgressSpinnerModule,
     PanelModule,
     ButtonModule,
+    InputTextModule,
     CardModule,
+    MenubarModule,
+    RippleModule
     /*FieldsetModule,
     MenubarModule,
     ToolbarModule ,

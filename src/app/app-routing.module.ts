@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './shared/pages/landing/landing.component';
+import { LoggedGuard } from './auth/guards/logged.guard';
+import { AuthGuard } from './logged/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -8,10 +10,17 @@ const routes: Routes = [
   },
   {
     path:'auth',
-    loadChildren: ()=>import('./auth/auth.module').then(m=>m.AuthModule)
+    loadChildren: ()=>import('./auth/auth.module').then(m=>m.AuthModule),
+    canActivate:[LoggedGuard]
   },
   {
-    path:'**',redirectTo:''
+    path:'user',
+    loadChildren: ()=>import('./logged/logged.module').then(m=>m.LoggedModule),
+    canActivate:[AuthGuard]
+  },
+  
+  {
+    path:'**',redirectTo:'auth'
   }
 
 

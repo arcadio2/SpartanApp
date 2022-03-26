@@ -1,3 +1,38 @@
 
 <a routerLink="/auth/login">Login</a>
 
+
+<div class="price-container">
+
+    <p-card>
+        <ng-template pTemplate="header">
+            <h1>Lista de precios</h1>
+        </ng-template>
+        
+        <div class="grid">
+            <div class="col-6 do-click" *ngFor="let precio of precios" (click)="1">
+                <p-card>
+                    <ng-template pTemplate="header">
+                        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+                        <h4>{{precio.tipoSubscripcion}}</h4>
+                    </ng-template>
+                    Costo: $ {{precio.precio}} MXN
+                </p-card>
+
+
+            </div>
+
+        </div>
+
+        <ng-template pTemplate="footer">
+            Sugerir otro precio
+        </ng-template>
+    </p-card>
+    
+
+</div>
+
+
+
+
+

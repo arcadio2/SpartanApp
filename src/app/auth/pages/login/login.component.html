@@ -1,5 +1,6 @@
+<p-toast></p-toast>
 <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-    <p-panel header="Login Example">
+    <p-panel header="Inicio de sesión">
         <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
@@ -10,7 +11,7 @@
                 </div>
                 <div class="ui-grid-col-4">
                     <div [hidden]="loginForm.controls['nombre'].valid || !loginForm.controls['nombre'].dirty" class="alert alert-danger">
-                        Login is required
+                        El usuario es requerido
                     </div>
                 </div>
             </div>
@@ -19,11 +20,11 @@
                     Password:
                 </div>
                 <div class="ui-grid-col-6">
-                    <input pInputText type="password" formControlName="password" class="form-control" name="password">
+                    <input pInputText type="password" formControlName="password" class="form-control" name="password" >
                 </div>
                 <div class="ui-grid-col-4">
                     <div [hidden]="loginForm.controls['password'].valid || !loginForm.controls['password'].dirty" class="alert alert-danger">
-                        Password is required
+                        La contraseña es requerida
                     </div>
                 </div>
             </div>

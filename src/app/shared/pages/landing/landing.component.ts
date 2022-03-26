@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PreciosService } from '../../../core/precios.service';
+import { Precio } from '../../../models';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private preciosService:PreciosService) { }
+  precios!:Precio[];
 
   ngOnInit(): void {
+    this.obtenerPrecios(); 
+  }
+
+  obtenerPrecios(){
+    this.preciosService.getAllPrices().subscribe((resp) => {
+      this.precios = resp; 
+      console.log(this.precios)
+    }); 
   }
 
 }
