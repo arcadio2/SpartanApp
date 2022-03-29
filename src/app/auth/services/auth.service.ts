@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { URL_BACKEND } from '../../config/config';
 
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../models/user.model';
@@ -100,6 +100,25 @@ export class AuthService {
     }
     return false;
   }
+
+  registerUser(usuario:User){
+    return this.http.post<any>(this.url_base+'user/create',usuario)
+    .pipe(
+      map((response:any)=>{
+        return response.usuario as User; 
+      }),
+      catchError(e=>{
+        if (e.status == 400) {
+          return throwError(() => e);
+        }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(() => e);
+      })
+    ) 
+  }
+
 
   logout(): void {
     this._token = null;

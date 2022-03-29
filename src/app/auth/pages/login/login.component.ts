@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../../models/user.model';
 import {MessageService, PrimeNGConfig } from 'primeng/api';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
     constructor(private formBuilder:FormBuilder, 
             private authService:AuthService,
             private router:Router,
+            private toast:ToastrService,
             private messageService:MessageService,
             private primengConfig: PrimeNGConfig){}
 
@@ -52,7 +54,7 @@ export class LoginComponent implements OnInit {
           this.authService.guardarToken(res.access_token);
           this.usuario = this.authService.usuario;
           this.router.navigateByUrl('/user');
-          this.showSuccess();
+          this.toast.success("Haz iniciado sesión con éxito")
         },err=>{
           if(err.status==400){
     

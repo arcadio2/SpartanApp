@@ -8,6 +8,9 @@ import {CardModule} from 'primeng/card';
 import {RippleModule} from 'primeng/ripple';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
+import {TabMenuModule} from 'primeng/tabmenu';
+
+
 @NgModule({
   declarations: [
     
@@ -20,7 +23,8 @@ import {InputTextModule} from 'primeng/inputtext';
     InputTextModule,
     CardModule,
     MenubarModule,
-    RippleModule
+    RippleModule,
+    TabMenuModule,
     /*FieldsetModule,
     MenubarModule,
     ToolbarModule ,

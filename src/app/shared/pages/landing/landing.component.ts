@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PreciosService } from '../../../core/precios.service';
 import { Precio } from '../../../models';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-landing',
@@ -11,9 +12,11 @@ export class LandingComponent implements OnInit {
 
   constructor(private preciosService:PreciosService) { }
   precios!:Precio[];
+  items!: MenuItem[];
 
   ngOnInit(): void {
     this.obtenerPrecios(); 
+    
   }
 
   obtenerPrecios(){

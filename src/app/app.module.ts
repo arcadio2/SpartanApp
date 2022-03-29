@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
 
 import { PrimengModule } from './primeng/primeng.module';
 import { ToastrModule } from 'ngx-toastr';
+import { MenuLandingComponent } from './shared/components/menu-landing/menu-landing.component';
 
 
 
@@ -19,13 +20,22 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
     LandingComponent,
     FooterComponent,
+    MenuLandingComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     PrimengModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(
+      {positionClass: 'toast-bottom-center', timeOut: 5000,
+          preventDuplicates: true,
+          closeButton: true,
+          progressBar: true,
+          maxOpened: 1,
+          autoDismiss: true,
+          enableHtml: true},
+    ),
     HttpClientModule,
   ],
   providers: [MessageService],

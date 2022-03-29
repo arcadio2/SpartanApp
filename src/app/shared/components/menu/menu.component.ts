@@ -46,9 +46,9 @@ export class MenuComponent implements OnInit{
       this.items = [
       
         {
-          label:'xed',
-          icon:'pi pi-cog',
-          routerLink:'ordenar',
+          label:'Inicio',
+          icon:'pi pi-home',
+          routerLink:'/',
         },
         {
           label:'Sesión no iniciada',
