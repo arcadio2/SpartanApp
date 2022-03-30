@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PrimengModule } from '../primeng/primeng.module';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { LogoutComponent } from './pages/logout/logout.component';
     LoggedComponent,
     HomeComponent,
     NavbarComponent,
-    LogoutComponent
+    LogoutComponent,
+    PerfilComponent
   ],
   imports: [
     CommonModule,
