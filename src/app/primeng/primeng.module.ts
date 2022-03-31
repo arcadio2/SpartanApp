@@ -9,7 +9,8 @@ import {RippleModule} from 'primeng/ripple';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {TabMenuModule} from 'primeng/tabmenu';
-
+import {InputNumberModule} from 'primeng/inputnumber';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import {TabMenuModule} from 'primeng/tabmenu';
     MenubarModule,
     RippleModule,
     TabMenuModule,
+    InputNumberModule,
+    SelectButtonModule
     /*FieldsetModule,
     MenubarModule,
     ToolbarModule ,

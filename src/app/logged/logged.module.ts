@@ -8,6 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PrimengModule } from '../primeng/primeng.module';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { CreatePrfileComponent } from './components/create-prfile/create-prfile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,11 +18,14 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     HomeComponent,
     NavbarComponent,
     LogoutComponent,
-    PerfilComponent
+    PerfilComponent,
+
+    CreatePrfileComponent
   ],
   imports: [
     CommonModule,
-    PrimengModule,
+    PrimengModule,    
+    ReactiveFormsModule,
     LoggedRoutingModule
   ]
 })

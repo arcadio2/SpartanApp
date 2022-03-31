@@ -7,7 +7,10 @@
     password:string
     reoles:Role[]
 } */
-
+export interface Sexo{
+    id:number;
+    sexo:string;
+}
 export class User {
     id!:number;
     username!:string
@@ -16,6 +19,7 @@ export class User {
     email!:string
     password!:string
     roles!:Role[]
+
 }
 
 export interface Role{
@@ -37,11 +41,11 @@ export interface Rutina{
     ejercicios:Ejercicio[]; 
 }
 export interface Perfil{
-    id:number; 
-    usuario:User;
-    sexo:string;
-    foto:string; 
-    edad:number; 
-    peso:number; 
-    altura:number; 
+    id?:number; 
+    usuario?:User;
+    sexo?:Sexo;
+    foto?:string; 
+    edad?:number; 
+    peso?:number; 
+    altura?:number; 
 }

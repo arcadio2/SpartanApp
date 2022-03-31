@@ -41,5 +41,15 @@ export class UserService {
 
     return this.http.get(this.url_base+'user/profile/'+username,{headers:headers})
   }
+
+  saveProfile(perfil:Perfil){
+    const token = this.authService.token;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.post(this.url_base+'user/profile',perfil);
+  }
   
 }
