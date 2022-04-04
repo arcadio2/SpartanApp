@@ -15,11 +15,15 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = [
-      
+      {
+        label:'Inicio',
+        icon:'pi pi-home',
+        routerLink:'/user'
+      },
       {
         label:this.user.nombre,
         icon:'pi pi-cog',
-        routerLink:'ordenar',
+        routerLink:'/user/profile',
       },
       {
         label:'Sesión iniciada',

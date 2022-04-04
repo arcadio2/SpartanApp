@@ -47,7 +47,7 @@ export interface CatalogoSubscripcion{
 }
 export interface Subscripcion{
     id?:number; 
-    active:number;
+    active:boolean;
     tipo:CatalogoSubscripcion; 
 }
 export interface Perfil{

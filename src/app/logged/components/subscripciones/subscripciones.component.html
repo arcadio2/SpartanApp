@@ -1,7 +1,7 @@
 <div class="grid">
     <div class="col-6 do-click " *ngFor="let precio of precios; let i = index" 
         (click)="1" >
-        <div  (click)="selectPrice(i)" [ngClass]="{'selected':i==selected}">
+        <div  (click)="selectPrice(i,precio)" [ngClass]="{'selected':i==selected}">
             <app-precio [precio]="precio" ></app-precio>
         </div>
          
@@ -16,4 +16,11 @@
         iconPos="left" label="seleccionar" class="p-button-success">
 
     </button>
+    <div class="grid">
+        
+        <div class="col-2" *ngIf="selected>=0">
+            <app-paypal [precio]="precioSeleccionado" ></app-paypal>
+        </div>
+    </div>
+    
 </div>    

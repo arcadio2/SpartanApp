@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     this.userService.getProfileByUsername(this.user.username).subscribe((resp:any)=>{
       this.userService.guardarPerfil(resp.perfil);
       this.perfil = this.userService.perfil; 
-      console.log(resp)
+      
     })
   }
 

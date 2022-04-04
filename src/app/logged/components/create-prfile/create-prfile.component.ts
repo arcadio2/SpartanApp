@@ -64,6 +64,7 @@ export class CreatePrfileComponent implements OnInit {
      
       this.userService.saveProfile(this.perfil).subscribe((resp:any)=>{
         this.perfil = resp.perfil as Perfil;
+        this.userService.setPerfil = this.perfil;
         this.cambio.emit(this.perfil); 
       })
       /* this.perfil.edad = this.profileForm.get('edad')?.value; 

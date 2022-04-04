@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PreciosService } from '../../../core/precios.service';
 import { Precio } from '../../../models';
+import { BuyService } from '../../services/buy.service';
 
 @Component({
   selector: 'app-subscripciones',
@@ -11,8 +12,11 @@ export class SubscripcionesComponent implements OnInit {
 
 
 
-  constructor(private preciosService:PreciosService) { }
+  constructor(private preciosService:PreciosService,
+    private buyService:BuyService) { }
+    
   precios!:Precio[];
+  precioSeleccionado!: Precio;
   selected!:number;
   buttonLoading:boolean = false; 
   ngOnInit(): void {
@@ -25,8 +29,10 @@ export class SubscripcionesComponent implements OnInit {
     }); 
   }
 
-  selectPrice(i:number){
+  selectPrice(i:number,precio:Precio){
     this.selected = i; 
+    this.buyService.setPrecio = precio; 
+    this.precioSeleccionado = precio; 
   }
   buy(){
     this.buttonLoading = true; 
