@@ -40,6 +40,16 @@ export interface Rutina{
     dia:DiaSemana;
     ejercicios:Ejercicio[]; 
 }
+export interface CatalogoSubscripcion{
+    id:number;
+    tipoSubscripcion:string;
+    precio:number;
+}
+export interface Subscripcion{
+    id?:number; 
+    active:number;
+    tipo:CatalogoSubscripcion; 
+}
 export interface Perfil{
     id?:number; 
     usuario?:User;
@@ -48,4 +58,5 @@ export interface Perfil{
     edad?:number; 
     peso?:number; 
     altura?:number; 
+    subscripcion?:Subscripcion;
 }

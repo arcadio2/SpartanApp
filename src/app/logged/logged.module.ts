@@ -10,6 +10,8 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { CreatePrfileComponent } from './components/create-prfile/create-prfile.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SubscripcionesComponent } from './components/subscripciones/subscripciones.component';
+import { PrecioComponent } from './components/precio/precio.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LogoutComponent,
     PerfilComponent,
 
-    CreatePrfileComponent
+    CreatePrfileComponent,
+     SubscripcionesComponent,
+     PrecioComponent
   ],
   imports: [
     CommonModule,

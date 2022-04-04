@@ -1,0 +1,19 @@
+<div class="grid">
+    <div class="col-6 do-click " *ngFor="let precio of precios; let i = index" 
+        (click)="1" >
+        <div  (click)="selectPrice(i)" [ngClass]="{'selected':i==selected}">
+            <app-precio [precio]="precio" ></app-precio>
+        </div>
+         
+    </div>
+
+
+</div>
+<div>
+    <button icon="pi pi-check" 
+        pButton [loading]="buttonLoading" 
+        (click)="buy()"
+        iconPos="left" label="seleccionar" class="p-button-success">
+
+    </button>
+</div>    

@@ -1,6 +1,19 @@
 <div *ngIf="perfil; else noPerfil">
     
     <span class="text-white">Ya tienes un perfil</span>
+    <br>
+    <div *ngIf="perfil.subscripcion; else noSub">
+        <span>Ya estás suscrito</span>
+        
+    </div>
+    
+    <ng-template #noSub>
+        <span  class="text-white">
+            No tienes subscripción activa, debes elegir una o también puedes pagar
+            directamente en el gimnasio
+        </span>
+        <app-subscripciones></app-subscripciones>
+    </ng-template>
     
 </div>
 
@@ -8,7 +21,7 @@
 
     <span class="text-white">No tienes un perfil, agrega tus datos</span>
     <div class="form-profile">
-        <app-create-prfile></app-create-prfile>
+        <app-create-prfile (cambio)="asignPerfil($event)"></app-create-prfile>
     </div>
 
 </ng-template>

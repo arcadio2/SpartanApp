@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ import { User, Perfil, Sexo } from '../../../models/user.model';
 
 export class CreatePrfileComponent implements OnInit {
   usuario:User = new User();
+  @Output() cambio = new EventEmitter<Perfil>();
   perfil!:Perfil;
   sexos:Sexo[]=[];
   sexo!:Sexo;
@@ -30,6 +31,7 @@ export class CreatePrfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuario = this.authService.usuario; 
+    console.log(this.usuario)
     this.sexos = [
       {id:1,sexo:'Hombre'},
       {id:2,sexo:'Mujer'},
@@ -59,7 +61,11 @@ export class CreatePrfileComponent implements OnInit {
         sexo:this.sexo,
         usuario:this.usuario
       }
-
+     
+      this.userService.saveProfile(this.perfil).subscribe((resp:any)=>{
+        this.perfil = resp.perfil as Perfil;
+        this.cambio.emit(this.perfil); 
+      })
       /* this.perfil.edad = this.profileForm.get('edad')?.value; 
       this.perfil.peso = this.profileForm.get('peso')?.value; 
       this.perfil.altura = this.profileForm.get('altura')?.value;  */
