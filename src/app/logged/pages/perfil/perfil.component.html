@@ -1,2 +1,58 @@
 
-<h1 class="text-white">Este es tu perfil</h1>
+<div *ngIf="perfil; else noPerfil">
+    <h1 class="text-white">Este es tu perfil {{perfil.usuario?.username}} {{perfil.usuario?.apellido}}</h1>
+    <img  *ngIf="perfil?.foto"
+    src="{{url_backend}}api/clientes/uploads/img/{{perfil.foto}}" alt="{{perfil.foto}}" class="img-thumbnail rounded"
+    style="width:64px; cursor: pointer;">
+    <img  *ngIf="!perfil?.foto"
+        src="{{url_backend}}images/no_user.png" alt="Sin foto" class="img-thumbnail rounded"
+        style="width:64px; cursor: pointer;">
+
+    <h3 class="text-white">
+        Edad:{{perfil.edad}} 
+    </h3>    
+    
+    <h3 class="text-white">
+        Sexo:{{perfil.sexo?.sexo}}
+    </h3> 
+    <h3 class="text-white">
+        Peso:{{perfil.peso}}
+    </h3> 
+    <h3 class="text-white">
+        Estatura:{{perfil.altura}}
+    </h3> 
+    
+    <h2>Datos de usuario:</h2>
+    
+    <h3 class="text-white">
+        Email:{{perfil.usuario?.email}}
+    </h3> 
+    <h3 class="text-white">
+        Nombre:{{perfil.usuario?.email}}
+    </h3> 
+    <h3 class="text-white">
+        Email:{{perfil.usuario?.email}}
+    </h3> 
+    
+    <h3 *ngIf="perfil.subscripcion; else noSub" class="text-white">
+        Subscripcion: {{perfil.subscripcion?.tipo?.tipoSubscripcion}}<br>
+        Fecha subscripción: {{perfil.subscripcion.fechaSubscripcion | date}}<br>
+        Fecha de finalización: {{perfil.subscripcion.fechaFin | date}}
+    </h3>
+    <ng-template #noSub>
+        <h3 class="text-white"> 
+            No tienes subscripción
+        </h3>
+    </ng-template>
+    
+</div>
+
+
+<ng-template #noPerfil>
+    <h1 class="text-white">
+        Aún no tienes un perfil asignado
+    </h1>
+    <h3>Regresa a crear un perfil</h3>
+    <button pButton label="crear perfil" [routerLink]="['/user']"></button>
+</ng-template>
+

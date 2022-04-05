@@ -1,0 +1,47 @@
+<p-paginator [rows]="10" [totalRecords]="ejercicios.length" (onPageChange)="onPageChange($event)"> <!-- [rowsPerPageOptions]="[10,20,30]" -->
+
+</p-paginator>
+<p-table [value]="ejerciciosMostrados" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            Products
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+            <input pInputText class="" [(ngModel)]="texto" (keyup)="buscar()">
+            
+            <p-button icon="pi pi-search"></p-button>
+    
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th>#</th>
+            <th>Ejercicio</th>
+            <th>Parte del cuerpo que trabaja</th>
+            
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ejercicio>
+        <tr>
+            <td>{{ejercicio.id}}</td>
+            <!--  <td><img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td> -->
+            <td>{{ejercicio.nombre }}</td>
+            <td>{{ejercicio.musculo}}</td>
+            
+            
+        </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            In total there are {{products ? products.length : 0 }} products.
+        </div>
+    </ng-template> -->
+
+</p-table>
+
+<div *ngIf="ejercicios.length==0" class="text-white">
+    <h1>No hay ejercicios con ese nombre</h1>
+</div>

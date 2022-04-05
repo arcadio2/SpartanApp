@@ -21,6 +21,11 @@ export class NavbarComponent implements OnInit {
         routerLink:'/user'
       },
       {
+        label:'Lista de ejercicios',
+        icon:'pi pi-users',
+        routerLink:'/user/ejercicios'
+      },
+      {
         label:this.user.nombre,
         icon:'pi pi-cog',
         routerLink:'/user/profile',

@@ -43,11 +43,14 @@ export interface Rutina{
 export interface CatalogoSubscripcion{
     id:number;
     tipoSubscripcion:string;
+    dias?:number;
     precio:number;
 }
 export interface Subscripcion{
     id?:number; 
     active:boolean;
+    fechaSubscripcion?:Date;
+    fechaFin?:Date;
     tipo:CatalogoSubscripcion; 
 }
 export interface Perfil{

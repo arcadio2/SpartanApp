@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/api';
 import { PrimengModule } from './primeng/primeng.module';
 import { ToastrModule } from 'ngx-toastr';
 import { MenuLandingComponent } from './shared/components/menu-landing/menu-landing.component';
+import { EjerciciosComponent } from './shared/components/ejercicios/ejercicios.component';
 
 
 
@@ -21,6 +22,7 @@ import { MenuLandingComponent } from './shared/components/menu-landing/menu-land
     LandingComponent,
     FooterComponent,
     MenuLandingComponent,
+    EjerciciosComponent,
   ],
   imports: [
     BrowserModule,

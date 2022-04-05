@@ -10,15 +10,17 @@
 
 </div>
 <div>
-    <button icon="pi pi-check" 
+   <!--  <button icon="pi pi-check" 
         pButton [loading]="buttonLoading" 
         (click)="buy()"
         iconPos="left" label="seleccionar" class="p-button-success">
 
-    </button>
+    </button> -->
+    
     <div class="grid">
         
         <div class="col-2" *ngIf="selected>=0">
+            Paga el precio seleccionado
             <app-paypal [precio]="precioSeleccionado" ></app-paypal>
         </div>
     </div>

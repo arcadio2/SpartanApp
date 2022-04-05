@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SubscripcionesComponent } from './components/subscripciones/subscripciones.component';
 import { PrecioComponent } from './components/precio/precio.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
+import { EjerciciosUserComponent } from './pages/ejercicios-user/ejercicios-user.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { PaypalComponent } from './components/paypal/paypal.component';
     CreatePrfileComponent,
      SubscripcionesComponent,
      PrecioComponent,
-     PaypalComponent
+     PaypalComponent,
+     EjerciciosUserComponent
   ],
   imports: [
     CommonModule,

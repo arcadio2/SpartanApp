@@ -11,7 +11,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {SelectButtonModule} from 'primeng/selectbutton';
-
+import {TableModule} from 'primeng/table';
+import {PaginatorModule} from 'primeng/paginator';
 @NgModule({
   declarations: [
     
@@ -26,6 +27,8 @@ import {SelectButtonModule} from 'primeng/selectbutton';
     MenubarModule,
     RippleModule,
     TabMenuModule,
+    TableModule,
+    PaginatorModule,
     InputNumberModule,
     SelectButtonModule
     /*FieldsetModule,
