@@ -88,7 +88,15 @@
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2"></div>
                 <div class="ui-grid-col-6">
-                    <button pButton type="submit" label="Submit" [disabled]="!loginForm.valid"></button>
+                    <!-- [loading]="buttonLoading"  -->
+                    <button icon="pi pi-send" 
+                    type="submit"
+                    pButton  [disabled]="!loginForm.valid"
+                    iconPos="left" label="Registrarse" class="p-button-success">
+            
+                    </button>
+
+                   <!--  <button pButton type="submit" label="Submit" [disabled]="!loginForm.valid"></button> -->
                 </div>
                 <div class="ui-grid-col-4"></div>
             
