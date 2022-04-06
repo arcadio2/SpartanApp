@@ -14,6 +14,7 @@ import { SubscripcionesComponent } from './components/subscripciones/subscripcio
 import { PrecioComponent } from './components/precio/precio.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { EjerciciosUserComponent } from './pages/ejercicios-user/ejercicios-user.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { EjerciciosUserComponent } from './pages/ejercicios-user/ejercicios-user
      SubscripcionesComponent,
      PrecioComponent,
      PaypalComponent,
-     EjerciciosUserComponent
+     EjerciciosUserComponent,
+     EditComponent
   ],
   imports: [
     CommonModule,

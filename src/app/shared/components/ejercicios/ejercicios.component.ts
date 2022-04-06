@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EjerciciosService } from 'src/app/core/ejercicios.service';
-import { Ejercicio } from '../../../models/user.model';
+import { Ejercicio, Musculo } from '../../../models/user.model';
 
 @Component({
   selector: 'app-ejercicios',
@@ -11,19 +11,35 @@ export class EjerciciosComponent implements OnInit {
 
   ejercicios:Ejercicio[]=[]; 
   texto:string=""; 
+  musculos:Musculo[] = []; 
+  selectedMusculos:number[] =[]; 
   ejerciciosMostrados:Ejercicio[]=[]; 
   constructor(private ejercicioService:EjerciciosService) { }
 
   ngOnInit(): void {
+    this.obtenerMusculos();
     this.obtenerEjercicios();
 
+  }
+
+  obtenerMusculos(){
+    this.ejercicioService.getAllMusculos().subscribe(resp=>{
+      this.musculos = resp; 
+    })
+  }
+
+
+  cambio(){
+    this.ejercicioService.getEjerciciosByNombreAndMusculo(this.texto,this.selectedMusculos).subscribe(resp=>{
+      this.ejercicios = resp; 
+      this.ejerciciosMostrados = this.ejercicios.slice(0,10); 
+    })
   }
 
   obtenerEjercicios(){
     this.ejercicioService.getAllEjercicios().subscribe(resp=>{
       this.ejercicios = resp;  
-      
-      this.ejerciciosMostrados = this.ejercicios.slice().splice(0,10); 
+      this.ejerciciosMostrados = this.ejercicios.slice(0,10); 
       
     })
   }
@@ -31,17 +47,24 @@ export class EjerciciosComponent implements OnInit {
 
 
   onPageChange(event:any){
+
     const inicioPage = event.first; 
     const finPage = inicioPage+10; 
-    this.ejerciciosMostrados = this.ejercicios.slice().splice(inicioPage,finPage);
+    
+    this.ejerciciosMostrados = this.ejercicios.slice(inicioPage,finPage);
+    
   }
 
 
   buscar(){
-    this.ejercicioService.getEjerciciosByNombre(this.texto).subscribe(resp=>{
-      this.ejercicios = resp; 
-      this.ejerciciosMostrados = this.ejercicios.slice().splice(0,10); 
-    })
+    /* this.selectedMusculos = []; */
+    
+      this.ejercicioService.getEjerciciosByNombreAndMusculo(this.texto,this.selectedMusculos).subscribe(resp=>{
+        this.ejercicios = resp; 
+        this.ejerciciosMostrados = this.ejercicios.slice(0,10); 
+      })
+    
+    
   }
 
 }

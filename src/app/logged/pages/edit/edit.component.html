@@ -1,0 +1,114 @@
+<p-toast></p-toast>
+<form (ngSubmit)="editarPerfil()" [formGroup]="profileForm" enctype="multipart/form-data">
+    <p-panel header="Edita tu perfil">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid-row">
+
+                <img  *ngIf="perfil?.foto"
+                src="{{url_backend}}api/usuarios/uploads/img/{{perfil.foto}}" alt="{{perfil.foto}}" class="img-thumbnail rounded"
+                style="width:64px; cursor: pointer;">
+                <img  *ngIf="!perfil?.foto"
+                    src="{{url_backend}}images/no_user.png" alt="Sin foto" class="img-thumbnail rounded"
+                    style="width:64px; cursor: pointer;">
+                <div class="ui-grid-col-2">
+                    Foto:
+                </div>
+                <div class="ui-grid-col-6">
+                        <div class="input-file">
+                            <label for="inputGroupFile04" class="custom-file-upload">
+                                <input (change)="seleccionarFoto($event)" type="file" 
+                                    formControlName="foto" pInputText id="file-upload"
+                                    id="inputGroupFile04"
+                                    aria-describedby="inputGroupFileAddon04">
+                                Selecciona imagen
+                            </label>
+                            <span *ngIf="fotoSeleccionada">
+                                {{fotoSeleccionada.name}}
+                            </span>
+                                    
+                        </div>
+                    
+                    <button pButton label="Actualizar foto" icon="pi pi-send"
+                        type="button"  (click)="subirFoto()"
+                        class="p-button-text">
+
+                    </button>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div [hidden]="profileForm.controls['foto'].valid || !profileForm.controls['foto'].dirty" class="alert alert-danger">
+                        La foto es requerida
+                    </div>
+                    <div *ngIf="errores?.nombre" class="alert alert-danger">
+                        {{errores.nombre}}
+                    </div>
+                </div>
+            </div>
+
+        
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Edad:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="edad" class="form-control" name="edad">
+                </div>
+                <div class="ui-grid-col-4">
+                    <div [hidden]="profileForm.controls['edad'].valid || !profileForm.controls['edad'].dirty" class="alert alert-danger">
+                        La edad es requerida
+                    </div>
+                    <div *ngIf="errores?.nombre" class="alert alert-danger">
+                        {{errores.nombre}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Altura:
+                </div>
+                <div class="ui-grid-col-6">
+                    <p-inputNumber formControlName="altura" class="form-control" name="altura">
+
+                    </p-inputNumber>
+                    <!-- <input pInputNumber type="number"  > -->
+                </div>
+                <div class="ui-grid-col-4">
+                    <div [hidden]="profileForm.controls['altura'].valid || !profileForm.controls['altura'].dirty" class="alert alert-danger">
+                        La altura es requerida
+                    </div>
+                    <div *ngIf="errores?.apellido" class="alert alert-danger">
+                        {{errores.apellido}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Peso:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="peso" class="form-control" name="peso" >
+                </div>
+                <div class="ui-grid-col-4">
+                    <div [hidden]="profileForm.controls['peso'].valid || !profileForm.controls['peso'].dirty" class="alert alert-danger">
+                        El peso es requerido
+                    </div>
+                    <div *ngIf="errores?.username" class="alert alert-danger">
+                        {{errores?.peso}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2"></div>
+                <div class="ui-grid-col-6">
+                    <button pButton type="submit" label="editar" 
+                    (click)="subirFoto()"
+                    ></button>
+                </div>
+                <div class="ui-grid-col-4"></div>
+            
+            </div>
+        </div>
+    </p-panel>
+</form>

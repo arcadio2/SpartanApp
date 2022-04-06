@@ -6,7 +6,8 @@ import { AuthGuard } from './logged/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path:'',component:LandingComponent
+    path:'',component:LandingComponent,
+    canActivate:[LoggedGuard]
   },
   {
     path:'auth',

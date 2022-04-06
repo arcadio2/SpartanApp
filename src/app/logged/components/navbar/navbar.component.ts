@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { User } from '../../../models/user.model';
+import { User, Perfil } from '../../../models/user.model';
+import { URL_BACKEND } from '../../../config/config';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +12,14 @@ import { User } from '../../../models/user.model';
 export class NavbarComponent implements OnInit {
   items: MenuItem[]=[];
   @Input() user!:User;
+  @Input() perfil!:Perfil; 
 
-  constructor() { }
+
+  url_backend:string =  URL_BACKEND;
+  constructor(public usuarioService:UserService) { }
 
   ngOnInit(): void {
+    console.log("hola")
     this.items = [
       {
         label:'Inicio',
@@ -39,7 +45,7 @@ export class NavbarComponent implements OnInit {
           {
             label:'Editar perfil',
             icon: 'pi pi-sign-in',
-            routerLink:'/auth'
+            routerLink:'/user/edit'
           },
           {
             label:'Cerrar sesión',

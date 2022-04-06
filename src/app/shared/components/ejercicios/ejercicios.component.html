@@ -9,9 +9,22 @@
             <div></div><div></div><div></div><div></div><div></div>
             <div></div><div></div><div></div><div></div><div></div>
             <div></div><div></div><div></div><div></div><div></div>
-            <input pInputText class="" [(ngModel)]="texto" (keyup)="buscar()">
+            <p-multiSelect [options]="musculos" 
+                    [(ngModel)]="selectedMusculos" optionLabel="musculo"
+                    defaultLabel="Selecciona un musculo para filtrar"
+                    [maxSelectedLabels]="5"
+                    (onChange)="cambio()"
+                    optionValue="id"
+                    ></p-multiSelect>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText class="" [(ngModel)]="texto" (keyup)="buscar()"
+                placeholder="Ejercicio">  
+            </span>
             
-            <p-button icon="pi pi-search"></p-button>
+            
+            
+            <!-- <p-button icon="pi pi-search"></p-button> -->
     
         </div>
     </ng-template>
@@ -29,7 +42,7 @@
             <td>{{ejercicio.id}}</td>
             <!--  <td><img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td> -->
             <td>{{ejercicio.nombre }}</td>
-            <td>{{ejercicio.musculo}}</td>
+            <td>{{ejercicio.musculo.musculo}}</td>
             
             
         </tr>

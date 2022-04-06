@@ -13,6 +13,10 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {TableModule} from 'primeng/table';
 import {PaginatorModule} from 'primeng/paginator';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {AvatarModule} from 'primeng/avatar';
+import {FileUploadModule} from 'primeng/fileupload';
+
 @NgModule({
   declarations: [
     
@@ -30,7 +34,10 @@ import {PaginatorModule} from 'primeng/paginator';
     TableModule,
     PaginatorModule,
     InputNumberModule,
-    SelectButtonModule
+    SelectButtonModule,
+    MultiSelectModule,
+    AvatarModule,
+    FileUploadModule
     /*FieldsetModule,
     MenubarModule,
     ToolbarModule ,

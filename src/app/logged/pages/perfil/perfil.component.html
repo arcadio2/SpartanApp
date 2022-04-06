@@ -2,7 +2,7 @@
 <div *ngIf="perfil; else noPerfil">
     <h1 class="text-white">Este es tu perfil {{perfil.usuario?.username}} {{perfil.usuario?.apellido}}</h1>
     <img  *ngIf="perfil?.foto"
-    src="{{url_backend}}api/clientes/uploads/img/{{perfil.foto}}" alt="{{perfil.foto}}" class="img-thumbnail rounded"
+    src="{{url_backend}}api/usuarios/uploads/img/{{perfil.foto}}" alt="{{perfil.foto}}" class="img-thumbnail rounded"
     style="width:64px; cursor: pointer;">
     <img  *ngIf="!perfil?.foto"
         src="{{url_backend}}images/no_user.png" alt="Sin foto" class="img-thumbnail rounded"

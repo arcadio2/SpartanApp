@@ -4,6 +4,7 @@ import { BuyService } from '../../services/buy.service';
 import { Perfil } from '../../../models/user.model';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 declare let paypal:any;
 
 @Component({
@@ -17,7 +18,7 @@ export class PaypalComponent implements OnInit, OnChanges {
   @ViewChild('paypalRef',{static:true}) private paypalRef!:ElementRef;
   @Input() precio!:Precio;
   @Input() perfil!:Perfil;
-  constructor(private buyService:BuyService,
+  constructor(private buyService:BuyService, private userService:UserService,
     private toastr:ToastrService, private router:Router) { }
 
 
@@ -47,6 +48,7 @@ export class PaypalComponent implements OnInit, OnChanges {
         })
       },
       onApprove: async (details:any,action:any)=>{
+        
         await this.procesarPago(); 
       },
     }).render('#paypalRef');
@@ -78,13 +80,17 @@ this.paypalRef.nativeElement.innerHTML="";
       },
       onApprove: async (details:any,action:any)=>{
         await this.procesarPago(); 
+        this.userService.setPerfil = this.perfil;
       },
     }).render('#paypalRef');
   }
 
   async procesarPago(){
-    const estado = await this.buyService.pay().toPromise();
+    const estado:any = await this.buyService.pay().toPromise();
     if(estado){
+      this.perfil = estado.perfil as Perfil;
+      this.userService.setPerfil = this.perfil;
+      
       this.toastr.success("Se ha procesado el pago"); 
       
     }else{

@@ -30,10 +30,15 @@ export interface DiaSemana{
     id:number; 
     dia:string;
 }
+
+export interface Musculo{
+    id:number;
+    musculo:string; 
+}
 export interface Ejercicio{
     id:number;
     nombre:string;
-    musculo:string; 
+    musculo:Musculo; 
 }
 export interface Rutina{
     id:number; 

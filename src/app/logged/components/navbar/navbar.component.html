@@ -1,5 +1,21 @@
 <p-menubar [model]="items">
-    <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user"></button>
+
+
+
+    <button pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user"
+        *ngIf="!perfil || !perfil.foto; else siFoto"
+    ></button>
     
+    <ng-template #siFoto>
+        <p-avatar pBadge value="4" severity="danger" size="medium" shape="circle"
+            image="{{url_backend}}api/usuarios/uploads/img/{{usuarioService.perfil.foto}}"></p-avatar>
+
+    </ng-template>
+    
+    
+    
+
+
     <!-- <img src="./favicon.ico"> -->
 </p-menubar>
+

@@ -11,7 +11,9 @@ import { Perfil, User, Subscripcion } from '../../models/user.model';
 export class UserService {
   private url_base:string = URL_BACKEND+'api/';
   constructor(private http:HttpClient, private router: Router,
-          private authService:AuthService) { }
+          private authService:AuthService) { 
+            this.renovarPerfil(); 
+          }
 
   private _perfil!:Perfil;
   
@@ -30,6 +32,7 @@ export class UserService {
   }
   renovarPerfil(){
     this.getProfileByUsername(this.authService.usuario.username).subscribe((resp:any)=>{
+  
       this._perfil = resp.perfil as Perfil; 
     })
   }
@@ -56,7 +59,7 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
-    console.log(perfil)
+    
     return this.http.post(this.url_base+'user/profile',perfil,{headers:headers});
   }
 
@@ -71,8 +74,21 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
-    console.log(perfil)
+    
     return this.http.put(this.url_base+'user/profile',perfil,{headers:headers});
+  }
+
+  subirFoto(archivo: File, username:string) {
+    let formData = new FormData();
+    formData.append("file", archivo);
+    formData.append("username", username);
+    const token = this.authService.token;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    
+
+    return this.http.post(this.url_base+'usuarios/upload',formData,{headers:headers});
   }
   
 }

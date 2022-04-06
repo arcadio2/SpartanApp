@@ -31,7 +31,7 @@ export class CreatePrfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuario = this.authService.usuario; 
-    console.log(this.usuario)
+
     this.sexos = [
       {id:1,sexo:'Hombre'},
       {id:2,sexo:'Mujer'},
