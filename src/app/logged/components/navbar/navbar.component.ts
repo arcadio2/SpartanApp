@@ -19,7 +19,6 @@ export class NavbarComponent implements OnInit {
   constructor(public usuarioService:UserService) { }
 
   ngOnInit(): void {
-    console.log("hola")
     this.items = [
       {
         label:'Inicio',

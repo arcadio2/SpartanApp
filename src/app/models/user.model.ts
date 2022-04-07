@@ -18,8 +18,8 @@ export class User {
     apellido!:string
     email!:string
     password!:string
-    roles!:Role[]
-
+   /*  roles!:Role[] */
+    roles!:string[];
 }
 
 export interface Role{

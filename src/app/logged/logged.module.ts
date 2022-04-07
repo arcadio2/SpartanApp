@@ -15,6 +15,7 @@ import { PrecioComponent } from './components/precio/precio.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { EjerciciosUserComponent } from './pages/ejercicios-user/ejercicios-user.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { AdminModule } from '../admin/admin.module';
 
 
 @NgModule({
@@ -26,17 +27,20 @@ import { EditComponent } from './pages/edit/edit.component';
     PerfilComponent,
 
     CreatePrfileComponent,
-     SubscripcionesComponent,
-     PrecioComponent,
-     PaypalComponent,
-     EjerciciosUserComponent,
-     EditComponent
+    SubscripcionesComponent,
+    PrecioComponent,
+    PaypalComponent,
+    EjerciciosUserComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,
     PrimengModule,    
     ReactiveFormsModule,
     LoggedRoutingModule
+  ],
+  exports:[
+    NavbarComponent
   ]
 })
 export class LoggedModule { }

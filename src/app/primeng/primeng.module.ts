@@ -16,7 +16,8 @@ import {PaginatorModule} from 'primeng/paginator';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {AvatarModule} from 'primeng/avatar';
 import {FileUploadModule} from 'primeng/fileupload';
-
+import {MegaMenuModule} from 'primeng/megamenu';
+import {InputSwitchModule} from 'primeng/inputswitch';
 @NgModule({
   declarations: [
     
@@ -37,7 +38,9 @@ import {FileUploadModule} from 'primeng/fileupload';
     SelectButtonModule,
     MultiSelectModule,
     AvatarModule,
-    FileUploadModule
+    FileUploadModule,
+    MegaMenuModule,
+    InputSwitchModule
     /*FieldsetModule,
     MenubarModule,
     ToolbarModule ,

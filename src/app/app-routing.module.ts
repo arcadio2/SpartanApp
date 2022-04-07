@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './shared/pages/landing/landing.component';
 import { LoggedGuard } from './auth/guards/logged.guard';
 import { AuthGuard } from './logged/guards/auth.guard';
+import { AdminGuard } from './admin/guards/admin.guard';
+import { NoAdminGuard } from './admin/guards/no-admin.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +19,12 @@ const routes: Routes = [
   {
     path:'user',
     loadChildren: ()=>import('./logged/logged.module').then(m=>m.LoggedModule),
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard,NoAdminGuard]
+  },
+  {
+    path:'admin',
+    loadChildren: ()=>import('./admin/admin.module').then(m=>m.AdminModule),
+    canActivate:[AuthGuard,AdminGuard]
   },
   
   {

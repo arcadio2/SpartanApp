@@ -25,7 +25,7 @@ export class SubscripcionesComponent implements OnInit {
   obtenerPrecios(){
     this.preciosService.getAllPrices().subscribe((resp) => {
       this.precios = resp; 
-      console.log(this.precios)
+  
     }); 
   }
 

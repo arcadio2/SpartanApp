@@ -100,6 +100,22 @@ export class AuthService {
     }
     return false;
   }
+  isAdmin():boolean{
+    let user = this.usuario;
+    if(!user){
+      return false; 
+    }
+    let ban = false; 
+    user.roles.forEach(rol=>{
+      if(rol == "ROLE_ADMIN"){
+        
+        ban = true; 
+      }
+    })
+    return ban;
+  }
+
+
 
   registerUser(usuario:User){
     return this.http.post<any>(this.url_base+'user/create',usuario)
