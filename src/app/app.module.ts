@@ -33,7 +33,6 @@ import { EjerciciosComponent } from './shared/components/ejercicios/ejercicios.c
       {positionClass: 'toast-bottom-center', timeOut: 5000,
           preventDuplicates: true,
           closeButton: true,
-          progressBar: true,
           maxOpened: 1,
           autoDismiss: true,
           enableHtml: true},

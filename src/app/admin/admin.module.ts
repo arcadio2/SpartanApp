@@ -9,6 +9,8 @@ import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.com
 import { PrimengModule } from '../primeng/primeng.module';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { CreateUserComponent } from './pages/create-user/create-user.component';
   imports: [
     CommonModule,
     PrimengModule,
+    ToastrModule,
+    ReactiveFormsModule,
     AdminRoutingModule
   ],
   exports: [

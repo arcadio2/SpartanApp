@@ -1,15 +1,36 @@
+<p-toast position="top-center" key="c">
+    <ng-template let-message pTemplate="message">
+        <div class="flex flex-column" style="flex: 1">
+            <div class="text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="grid p-fluid">
+                <div class="col-6">
+                    <button type="button" pButton (click)="eliminar()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="col-6">
+                    <button type="button" pButton (click)="2" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+</p-toast>
+
 <p-paginator [rows]="10" [totalRecords]="usuarios.length" (onPageChange)="onPageChange($event)"> <!-- [rowsPerPageOptions]="[10,20,30]" -->
 
 </p-paginator>
-<p-table [value]="usuarios" responsiveLayout="scroll">
+<p-table [value]="usuariosMostradosFinal" responsiveLayout="scroll">
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
-            Products
+            Usuarios
             <div></div><div></div><div></div><div></div><div></div>
             <div></div><div></div><div></div><div></div><div></div>
             <div></div><div></div><div></div><div></div><div></div>
             <div></div><div></div><div></div><div></div><div></div>
-           <!--  <p-multiSelect [options]="musculos" 
+            <!--  <p-multiSelect [options]="musculos" 
                     [(ngModel)]="selectedMusculos" optionLabel="musculo"
                     defaultLabel="Selecciona un musculo para filtrar"
                     [maxSelectedLabels]="5"
@@ -44,30 +65,36 @@
     </ng-template>
     <ng-template pTemplate="body" let-usuario>
         <tr>
-            <td>{{usuario.id}}</td>
+            <td>{{usuario.user.id}}</td>
             <!--  <td><img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td> -->
-            <td>{{usuario.nombre }}</td>
-            <td>{{usuario.email}}</td>
-            <td>{{usuario.username}}</td>
-            <td>{{usuario.roles[0]?.nombre }} 
-                {{usuario.roles[1]?.nombre}} 
-                {{usuario.roles[2]?.nombre}}</td>
+            <td>{{usuario.user.nombre }}</td>
+            <td>{{usuario.user.email}}</td>
+            <td>{{usuario.user.username}}</td>
+            <td>{{nombreRole(usuario.user.roles[0]?.nombre)}} 
+                {{ (usuario.user.roles[0] && (usuario.user.roles[1] || usuario.user.roles[2])) ?',':''}} 
+                {{nombreRole(usuario.user.roles[1]?.nombre)}} 
+                {{ (usuario.user.roles[1] && (usuario.user.roles[2]) ) ?',':''}} 
+                {{nombreRole(usuario.user.roles[2]?.nombre)}}</td>
             <td>
-                <button pButton label="editar" class="p-button-warning"> 
+                <button pButton label="editar" class="p-button-warning" > 
 
                 </button>
             </td>
             <td>
-                <button pButton label="eliminar" class="p-button-danger"> 
+                <button pButton label="eliminar" class="p-button-danger" 
+                (click)="showConfirm(usuario.user)"> 
 
                 </button>
             </td>
             <td>
-                <p-inputSwitch [ngModel]="isAdmin(usuario)"></p-inputSwitch>
+                <p-inputSwitch [(ngModel)]="usuario.isAdmin" 
+                    (onChange)="cambiaAdmin($event,usuario.user)"></p-inputSwitch>
                 <!-- <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"></button> -->
             </td>
             <td>
-                <p-inputSwitch [ngModel]="isInstrucor(usuario)"></p-inputSwitch>
+                <p-inputSwitch [(ngModel)]="usuario.isInstructor"
+                    (onChange)="cambiarInstructor($event,usuario.user)"
+                ></p-inputSwitch>
                 <!-- <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"></button> -->
             </td>
             
@@ -82,5 +109,5 @@
 </p-table>
 
 <div *ngIf="usuarios.length==0" class="text-white">
-    <h1>No hay ejercicios con ese nombre</h1>
+    <h1>No hay usuarios con ese nombre</h1>
 </div>
