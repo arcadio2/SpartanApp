@@ -13,10 +13,11 @@ export interface Sexo{
 }
 export class User {
     id!:number;
-    username!:string
-    nombre!:string
-    apellido!:string
-    email!:string
+    username!:string;
+    
+    nombre!:string;
+    apellido!:string;
+    email!:string;
     password!:string
    /*  roles!:Role[] */
     roles!:string[];
@@ -64,6 +65,7 @@ export interface Perfil{
     sexo?:Sexo;
     foto?:string; 
     edad?:number; 
+    instructor?:string;
     peso?:number; 
     altura?:number; 
     subscripcion?:Subscripcion;

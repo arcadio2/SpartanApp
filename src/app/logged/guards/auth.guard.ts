@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanLoad {
       return true;
     }
      /* this.toast.info('Debes iniciar sesión');  */
-     this.toast.info('Debes iniciar sesión', ' Error', {
+    this.toast.info('Debes iniciar sesión', ' Error', {
       timeOut: 2000,
     });
     this.router.navigateByUrl('/auth'); 

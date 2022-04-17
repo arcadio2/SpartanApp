@@ -16,6 +16,8 @@ import { PaypalComponent } from './components/paypal/paypal.component';
 import { EjerciciosUserComponent } from './pages/ejercicios-user/ejercicios-user.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { AdminModule } from '../admin/admin.module';
+import { AlumnosComponent } from './pages/alumnos/alumnos.component';
+import { InstructorComponent } from './pages/instructor/instructor.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { AdminModule } from '../admin/admin.module';
     PrecioComponent,
     PaypalComponent,
     EjerciciosUserComponent,
-    EditComponent
+    EditComponent,
+    AlumnosComponent,
+    InstructorComponent
   ],
   imports: [
     CommonModule,

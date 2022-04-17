@@ -61,11 +61,13 @@ export class CreatePrfileComponent implements OnInit {
         sexo:this.sexo,
         usuario:this.usuario
       }
-     
       this.userService.saveProfile(this.perfil).subscribe((resp:any)=>{
+        console.log(resp)
         this.perfil = resp.perfil as Perfil;
         this.userService.setPerfil = this.perfil;
         this.cambio.emit(this.perfil); 
+      },error=>{
+        
       })
       /* this.perfil.edad = this.profileForm.get('edad')?.value; 
       this.perfil.peso = this.profileForm.get('peso')?.value; 

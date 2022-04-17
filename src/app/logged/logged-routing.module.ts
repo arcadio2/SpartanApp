@@ -7,6 +7,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { EjerciciosUserComponent } from './pages/ejercicios-user/ejercicios-user.component';
 import { EjerciciosComponent } from '../shared/components/ejercicios/ejercicios.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { AlumnosComponent } from './pages/alumnos/alumnos.component';
+import { InstructorComponent } from './pages/instructor/instructor.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
       {path:'profile',component:PerfilComponent},
       {path:'ejercicios',component:EjerciciosComponent},
       {path:'edit',component:EditComponent},
+      {path:'instructor/alumnos',component:AlumnosComponent},
+      {path:'instructor',component:InstructorComponent},
       {path:'**',redirectTo:'home'}
     ]
   }

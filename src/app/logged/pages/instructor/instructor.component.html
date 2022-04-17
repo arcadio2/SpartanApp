@@ -1,0 +1,16 @@
+<div *ngIf="perfil; else noPerfil">
+    <br>
+
+    
+    Bienvenido instructor
+    
+</div>
+
+<ng-template #noPerfil>
+
+    <span class="text-white">No tienes un perfil, agrega tus datos</span>
+    <div class="form-profile">
+        <app-create-prfile (cambio)="asignPerfil($event)"></app-create-prfile>
+    </div>
+
+</ng-template>

@@ -114,7 +114,35 @@ export class AuthService {
     })
     return ban;
   }
+  isInstructor():boolean{
+    let user = this.usuario;
+    if(!user){
+      return false; 
+    }
+    let ban = false; 
+    user.roles.forEach(rol=>{
+      if(rol == "ROLE_INSTRUCTOR"){
+        
+        ban = true; 
+      }
+    })
+    return ban;
+  }
 
+  isUser():boolean{
+    let user = this.usuario;
+    if(!user){
+      return false; 
+    }
+    let ban = false; 
+    user.roles.forEach(rol=>{
+      if(rol == "ROLE_USER"){
+        
+        ban = true; 
+      }
+    })
+    return ban;
+  }
 
 
   registerUser(usuario:User){
