@@ -6,7 +6,7 @@
     
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
-            Ejercicios
+            Alumnos
             <div></div><div></div><div></div><div></div><div></div>
             <div></div><div></div><div></div><div></div><div></div>
             <div></div><div></div><div></div><div></div><div></div>
@@ -15,7 +15,7 @@
             <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
                 <input pInputText class="" [(ngModel)]="texto" (keyup)="buscar()"
-                placeholder="Ejercicio">  
+                placeholder="Alumno">  
             </span>
             
             
@@ -33,6 +33,7 @@
             <th>Edad</th>
             <th>Peso</th>
             <th>Altura</th>
+            <th>Rutina</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-alumno>
@@ -50,6 +51,10 @@
             <td>{{alumno.edad}}</td>
             <td>{{alumno.peso}}</td>
             <td>{{alumno.altura}}</td>
+            <td>
+                <button pButton type="button" icon="pi pi-pencil"
+                    class="p-button-rounded p-button-info p-button-text"></button> <!-- [loading]="isLoading" -->
+            </td>
         </tr>
     </ng-template>
 </p-table>

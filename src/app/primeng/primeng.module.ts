@@ -22,6 +22,9 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {DividerModule} from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import {ImageModule} from 'primeng/image';
+import {TabViewModule} from 'primeng/tabview';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 @NgModule({
   declarations: [
     
@@ -48,7 +51,10 @@ import {ImageModule} from 'primeng/image';
     ImageModule,
     FieldsetModule,
     ChipModule,
-    InputSwitchModule
+    InputSwitchModule,
+    TabViewModule,
+    MessageModule,
+    MessageModule
     /*FieldsetModule,
     MenubarModule,
     ToolbarModule ,

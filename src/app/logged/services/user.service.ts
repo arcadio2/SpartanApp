@@ -100,6 +100,25 @@ export class UserService {
     })
     return this.http.get(this.url_base+'users/alumnos/'+instructor,{headers:headers})
   }
+
+  getProfilesByRole(role:string){
+    const token = this.authService.token;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }); 
+    return this.http.get(this.url_base+'users/perfiles/'+role,{headers:headers});
+  }
   
+  getUsuariosByRole(role:string){
+    const token = this.authService.token;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }); 
+    return this.http.get(this.url_base+'users/usuarios/'+role,{headers:headers});
+  }
 
 }

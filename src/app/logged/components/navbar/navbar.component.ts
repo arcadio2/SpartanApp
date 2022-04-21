@@ -29,8 +29,13 @@ export class NavbarComponent implements OnInit {
         },
         {
           label:'Alumnos',
-          icon:'pi pi-users',
+          icon:'pi pi-pencil',
           routerLink:'/user/instructor/alumnos'
+        },
+        {
+          label:'Usuarios',
+          icon:'pi pi-users',
+          routerLink:'/user/instructor/users'
         },
         {
           label:'Lista de ejercicios',
@@ -71,7 +76,7 @@ export class NavbarComponent implements OnInit {
         {
           label:'Rutinas',
           icon:'pi pi-heart-fill',
-          routerLink:'/user/rutinas'
+          routerLink:'/user/rutina'
         },
         {
           label:'Lista de ejercicios',

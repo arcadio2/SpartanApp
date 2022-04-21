@@ -18,6 +18,8 @@ import { EditComponent } from './pages/edit/edit.component';
 import { AdminModule } from '../admin/admin.module';
 import { AlumnosComponent } from './pages/alumnos/alumnos.component';
 import { InstructorComponent } from './pages/instructor/instructor.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { RutinaComponent } from './pages/rutina/rutina.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { InstructorComponent } from './pages/instructor/instructor.component';
     EjerciciosUserComponent,
     EditComponent,
     AlumnosComponent,
-    InstructorComponent
+    InstructorComponent,
+    UsuariosComponent,
+    RutinaComponent
   ],
   imports: [
     CommonModule,

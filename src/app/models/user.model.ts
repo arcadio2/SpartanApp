@@ -41,10 +41,17 @@ export interface Ejercicio{
     nombre:string;
     musculo:Musculo; 
 }
+export interface Serie{
+    id:number;
+    ejercicio:Ejercicio;
+    series:number;
+    repeticiones:number;
+}
+
 export interface Rutina{
     id:number; 
     dia:DiaSemana;
-    ejercicios:Ejercicio[]; 
+    series:Serie[]; 
 }
 export interface CatalogoSubscripcion{
     id:number;
@@ -68,5 +75,6 @@ export interface Perfil{
     instructor?:string;
     peso?:number; 
     altura?:number; 
+    rutinas?:Rutina[];
     subscripcion?:Subscripcion;
 }

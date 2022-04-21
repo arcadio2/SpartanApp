@@ -11,6 +11,8 @@ import { AlumnosComponent } from './pages/alumnos/alumnos.component';
 import { InstructorComponent } from './pages/instructor/instructor.component';
 import { InstructorGuard } from './guards/instructor.guard';
 import { UsuarioGuard } from './guards/usuario.guard';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { RutinaComponent } from './pages/rutina/rutina.component';
 
 
 const routes: Routes = [
@@ -22,8 +24,10 @@ const routes: Routes = [
       {path:'profile',component:PerfilComponent},
       {path:'ejercicios',component:EjerciciosComponent},
       {path:'edit',component:EditComponent},
+      {path:'rutina',component:RutinaComponent},
       {path:'instructor/alumnos',component:AlumnosComponent,canActivate:[InstructorGuard]},
       {path:'instructor',component:InstructorComponent,canActivate:[InstructorGuard]},
+      {path:'instructor/users',component:UsuariosComponent,canActivate:[InstructorGuard]},
       {path:'**',redirectTo:'home'}
     ]
   }
