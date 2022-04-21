@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   user!:User; 
   perfil!:Perfil;
-  constructor(private auth:AuthService,
+  constructor(public auth:AuthService,
     private userService:UserService,
     private buyService:BuyService) { }
 

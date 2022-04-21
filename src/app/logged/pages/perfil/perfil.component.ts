@@ -14,7 +14,9 @@ export class PerfilComponent implements OnInit {
   user!:User; 
   perfil!:Perfil;
   url_backend:string =  URL_BACKEND;
-  constructor(private auth:AuthService,private userService:UserService) { }
+  instructor!:Perfil; 
+
+  constructor(public auth:AuthService,private userService:UserService) { }
 
   ngOnInit(): void {
     this.user = this.auth.usuario;
@@ -24,7 +26,17 @@ export class PerfilComponent implements OnInit {
     this.userService.getProfileByUsername(this.user.username).subscribe((resp:any)=>{
       this.userService.guardarPerfil(resp.perfil);
       this.perfil = this.userService.perfil; 
-      
+      this.loadingInstructor(); 
     })
   }
+  loadingInstructor(){
+    if(this.perfil.instructor){
+      this.userService.getProfileByUsername(this.perfil.instructor).subscribe((resp:any)=>{
+
+        this.instructor = resp.perfil as Perfil;
+      })
+    }
+    
+  }
+
 }

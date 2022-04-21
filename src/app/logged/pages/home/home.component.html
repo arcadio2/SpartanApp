@@ -17,11 +17,15 @@
     </div>
     
     <ng-template #noSub>
-        <span  class="text-white">
-            No tienes subscripción activa, debes elegir una o también puedes pagar
-            directamente en el gimnasio
-        </span>
-        <app-subscripciones></app-subscripciones>
+        <div *ngIf="!auth.isInstructor()">
+            <span  class="text-white">
+                No tienes subscripción activa, debes elegir una o también puedes pagar
+                directamente en el gimnasio
+            </span>
+            <app-subscripciones></app-subscripciones>
+        </div>
+        
+        
     </ng-template>
     
 </div>

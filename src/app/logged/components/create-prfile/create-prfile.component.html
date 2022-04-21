@@ -7,14 +7,15 @@
                     Edad:
                 </div>
                 <div class="ui-grid-col-6">
-                    <input pInputText type="text" formControlName="edad" class="form-control" name="edad">
+                    <p-inputNumber formControlName="edad" class="form-control" name="edad"></p-inputNumber>
+                   
                 </div>
                 <div class="ui-grid-col-4">
                     <div [hidden]="profileForm.controls['edad'].valid || !profileForm.controls['edad'].dirty" class="alert alert-danger">
                         La edad es requerida
                     </div>
-                    <div *ngIf="errores?.nombre" class="alert alert-danger">
-                        {{errores.nombre}}
+                    <div *ngIf="errores?.edad" class="alert alert-danger">
+                        {{errores.edad}}
                     </div>
                 </div>
             </div>
@@ -24,7 +25,9 @@
                     Altura:
                 </div>
                 <div class="ui-grid-col-6">
-                    <p-inputNumber formControlName="altura" class="form-control" name="altura">
+                    <p-inputNumber formControlName="altura" class="form-control" name="altura"
+                    [minFractionDigits]="0" [maxFractionDigits]="2"
+                    mode="decimal">
 
                     </p-inputNumber>
                     <!-- <input pInputNumber type="number"  > -->
@@ -33,8 +36,8 @@
                     <div [hidden]="profileForm.controls['altura'].valid || !profileForm.controls['altura'].dirty" class="alert alert-danger">
                         La altura es requerida
                     </div>
-                    <div *ngIf="errores?.apellido" class="alert alert-danger">
-                        {{errores.apellido}}
+                    <div *ngIf="errores?.altura" class="alert alert-danger">
+                        {{errores.altura}}
                     </div>
                 </div>
             </div>
@@ -44,13 +47,16 @@
                     Peso:
                 </div>
                 <div class="ui-grid-col-6">
-                    <input pInputText type="text" formControlName="peso" class="form-control" name="peso" >
+                    <p-inputNumber formControlName="peso" class="form-control" name="peso"
+                    [minFractionDigits]="0" [maxFractionDigits]="2"
+                    mode="decimal"></p-inputNumber>
+                    
                 </div>
                 <div class="ui-grid-col-4">
                     <div [hidden]="profileForm.controls['peso'].valid || !profileForm.controls['peso'].dirty" class="alert alert-danger">
                         El peso es requerido
                     </div>
-                    <div *ngIf="errores?.username" class="alert alert-danger">
+                    <div *ngIf="errores?.peso" class="alert alert-danger">
                         {{errores?.peso}}
                     </div>
                 </div>
@@ -74,8 +80,8 @@
                     <div [hidden]="profileForm.controls['peso'].valid || !profileForm.controls['peso'].dirty" class="alert alert-danger">
                         El sexo es requerido
                     </div>
-                    <div *ngIf="errores?.username" class="alert alert-danger">
-                        {{errores?.peso}}
+                    <div *ngIf="errores?.sexo" class="alert alert-danger">
+                        {{errores?.sexo}}
                     </div>
                 </div>
             </div>

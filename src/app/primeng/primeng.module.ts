@@ -18,6 +18,10 @@ import {AvatarModule} from 'primeng/avatar';
 import {FileUploadModule} from 'primeng/fileupload';
 import {MegaMenuModule} from 'primeng/megamenu';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import {FieldsetModule} from 'primeng/fieldset';
+import {DividerModule} from 'primeng/divider';
+import { ChipModule } from 'primeng/chip';
+import {ImageModule} from 'primeng/image';
 @NgModule({
   declarations: [
     
@@ -38,8 +42,12 @@ import {InputSwitchModule} from 'primeng/inputswitch';
     SelectButtonModule,
     MultiSelectModule,
     AvatarModule,
+    DividerModule,
     FileUploadModule,
     MegaMenuModule,
+    ImageModule,
+    FieldsetModule,
+    ChipModule,
     InputSwitchModule
     /*FieldsetModule,
     MenubarModule,

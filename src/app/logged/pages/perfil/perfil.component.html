@@ -1,49 +1,131 @@
 
 <div *ngIf="perfil; else noPerfil">
-    <h1 class="text-white">Este es tu perfil {{perfil.usuario?.username}} {{perfil.usuario?.apellido}}</h1>
-    <img  *ngIf="perfil?.foto"
+    
+<!--     <p-chip [label]="perfil.usuario?.username || ''" 
+        image="{{url_backend}}api/usuarios/uploads/img/{{perfil.foto}}" 
+        *ngIf="perfil?.foto">
+
+    </p-chip>
+    <p-chip label="Text with image" image="{{url_backend}}images/no_user.png" *ngIf="!perfil?.foto">
+
+    </p-chip> -->
+    <div class="content-image">
+        <p-image src="{{url_backend}}api/usuarios/uploads/img/{{perfil.foto}}"  
+            [preview]="true"[preview]="true" class="radiada" 
+             
+            alt="{{perfil.foto}}" width="150" *ngIf="perfil?.foto"> 
+            <ng-template pTemplate="indicator">
+                {{perfil?.foto}}
+            </ng-template>
+        </p-image>
+        <p-image src="{{url_backend}}images/no_user.png"  
+            alt="{{perfil.foto}}" width="150" *ngIf="!perfil?.foto"> 
+            <ng-template pTemplate="indicator">
+                Sin usuario
+            </ng-template>
+        </p-image>
+        <h1 class="text-white"> {{perfil.usuario?.nombre}} {{perfil.usuario?.apellido}}</h1>
+        
+    </div>
+    
+
+   <!--  <img  *ngIf="perfil?.foto"
     src="{{url_backend}}api/usuarios/uploads/img/{{perfil.foto}}" alt="{{perfil.foto}}" class="img-thumbnail rounded"
     style="width:64px; cursor: pointer;">
     <img  *ngIf="!perfil?.foto"
         src="{{url_backend}}images/no_user.png" alt="Sin foto" class="img-thumbnail rounded"
-        style="width:64px; cursor: pointer;">
+        style="width:64px; cursor: pointer;"> -->
+        <div class="grid">
+            <div class="col">
+                <p-panel header="Perfil">
+                    <h3 class="text-white">
+                        Edad:{{perfil.edad}} 
+                    </h3>    
+                    
+                    <h3 class="text-white">
+                        Sexo:{{perfil.sexo?.sexo}}
+                    </h3> 
+                    <h3 class="text-white">
+                        Peso:{{perfil.peso}}
+                    </h3> 
+                    <h3 class="text-white">
+                        Estatura:{{perfil.altura}}
+                    </h3> 
+                </p-panel>
+                <p-panel header="Datos de usuario">
+                    <h3 class="text-white">
+                        Email:{{perfil.usuario?.email}}
+                    </h3> 
+                    <h3 class="text-white">
+                        Nombre:{{perfil.usuario?.nombre}}
+                    </h3> 
+                    <h3 class="text-white">
+                        Email:{{perfil.usuario?.username}}
+                    </h3> 
+                </p-panel>
+                
 
-    <h3 class="text-white">
-        Edad:{{perfil.edad}} 
-    </h3>    
+            </div>
+            <p-divider layout="vertical" *ngIf="auth.isUser()"></p-divider>
+            <div class="col" *ngIf="auth.isUser()"> 
+                <p-panel header="Subscripción">
+                    <h3 *ngIf="perfil.subscripcion; else noSub" class="text-white">
+                        Subscripcion: {{perfil.subscripcion?.tipo?.tipoSubscripcion}}<br>
+                        Fecha subscripción: {{perfil.subscripcion.fechaSubscripcion | date}}<br>
+                        Fecha de finalización: {{perfil.subscripcion.fechaFin | date}}
+                    </h3>
+                    <ng-template #noSub>
+                        <h3 class="text-white" *ngIf="!auth.isInstructor()"> 
+                            No tienes subscripción
+                        </h3>
+                    </ng-template>
+                </p-panel>
+                
+                <p-fieldset legend="Instructor" [toggleable]="true">
+                    <ng-template pTemplate="header">
+                        <img  *ngIf="instructor?.foto"
+                        src="{{url_backend}}api/usuarios/uploads/img/{{instructor.foto}}" alt="{{instructor.foto}}" class="img-thumbnail rounded"
+                        style="width:64px; cursor: pointer;">
+                        <img  *ngIf="!instructor?.foto"
+                            src="{{url_backend}}images/no_user.png" alt="Sin foto" class="img-thumbnail rounded"
+                            style="width:64px; cursor: pointer;">
+                    </ng-template> 
+            
+                    <p>
+                        Nombre: {{instructor?.usuario?.nombre}} {{instructor?.usuario?.apellido!}}
+                    </p>
+                    <p>
+                        Apodo: {{instructor?.usuario?.username}}
+                    </p>
+                    <p>
+                        Edad: {{instructor?.edad}}
+                    </p>
+                    <p>
+                        Peso: {{instructor?.peso}}
+                    </p>
+                    <p>
+                        Altura: {{instructor?.altura}}
+                    </p>
+                    <p>
+                        <img  *ngIf="instructor?.foto"
+                        src="{{url_backend}}api/usuarios/uploads/img/{{instructor.foto}}" alt="{{instructor.foto}}" class="img-thumbnail rounded"
+                        style="width:64px; cursor: pointer;">
+                        <img  *ngIf="!instructor?.foto"
+                            src="{{url_backend}}images/no_user.png" alt="Sin foto" class="img-thumbnail rounded"
+                            style="width:64px; cursor: pointer;">
+                    </p>
+                </p-fieldset>
+            </div>
+            
+        </div>
+
     
-    <h3 class="text-white">
-        Sexo:{{perfil.sexo?.sexo}}
-    </h3> 
-    <h3 class="text-white">
-        Peso:{{perfil.peso}}
-    </h3> 
-    <h3 class="text-white">
-        Estatura:{{perfil.altura}}
-    </h3> 
-    
-    <h2>Datos de usuario:</h2>
-    
-    <h3 class="text-white">
-        Email:{{perfil.usuario?.email}}
-    </h3> 
-    <h3 class="text-white">
-        Nombre:{{perfil.usuario?.email}}
-    </h3> 
-    <h3 class="text-white">
-        Email:{{perfil.usuario?.email}}
-    </h3> 
-    
-    <h3 *ngIf="perfil.subscripcion; else noSub" class="text-white">
-        Subscripcion: {{perfil.subscripcion?.tipo?.tipoSubscripcion}}<br>
-        Fecha subscripción: {{perfil.subscripcion.fechaSubscripcion | date}}<br>
-        Fecha de finalización: {{perfil.subscripcion.fechaFin | date}}
-    </h3>
-    <ng-template #noSub>
-        <h3 class="text-white"> 
-            No tienes subscripción
-        </h3>
-    </ng-template>
+  
+
+
+
+
+  
     
 </div>
 

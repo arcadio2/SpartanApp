@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioGuard implements CanActivate, CanLoad {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  constructor(private authService: AuthService,
+    private router: Router){}
+  canActivate(): Observable<boolean > | Promise<boolean > | boolean {
+    if(!this.authService.isUser()){
+      this.router.navigateByUrl("/user/instructor"); 
+      return false; 
+    }
     return true;
   }
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canLoad(): Observable<boolean > | Promise<boolean > | boolean  {
+    if(!this.authService.isUser()){
+      this.router.navigateByUrl("/user/instructor"); 
+      return false; 
+    }
     return true;
   }
 }

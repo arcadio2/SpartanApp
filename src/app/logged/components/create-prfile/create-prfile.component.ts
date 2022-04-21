@@ -38,10 +38,10 @@ export class CreatePrfileComponent implements OnInit {
 
     ]
     this.profileForm = this.fromBuilder.group({
-      edad:['',[Validators.required]],
-      peso:[''],
-      altura:[''],
-      sexo:[''],
+      edad:[,[Validators.required]],
+      peso:[],
+      altura:[],
+      sexo:[],
     })
   }
 
@@ -62,12 +62,16 @@ export class CreatePrfileComponent implements OnInit {
         usuario:this.usuario
       }
       this.userService.saveProfile(this.perfil).subscribe((resp:any)=>{
-        console.log(resp)
+        if(resp){
+          this.toast.success("Se ha guardado el usuario","Completado");
+        }
         this.perfil = resp.perfil as Perfil;
         this.userService.setPerfil = this.perfil;
         this.cambio.emit(this.perfil); 
       },error=>{
-        
+        this.errores = error.error.errors;
+        this.toast.error("Ocurrió un error al guardar los datos"); 
+
       })
       /* this.perfil.edad = this.profileForm.get('edad')?.value; 
       this.perfil.peso = this.profileForm.get('peso')?.value; 

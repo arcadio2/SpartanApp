@@ -1,1 +1,55 @@
-<p>alumnos works!</p>
+<p-table [value]="alumnos" 
+ dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" responsiveLayout="scroll"
+[paginator]="true" currentPageReportTemplate="Mostrando de {first} a {last} de {totalRecords} alumno"
+[filterDelay]="0" [globalFilterFields]="['name','country.name','representative.name','status']">
+    
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            Ejercicios
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText class="" [(ngModel)]="texto" (keyup)="buscar()"
+                placeholder="Ejercicio">  
+            </span>
+            
+            
+            
+            <!-- <p-button icon="pi pi-search"></p-button> -->
+
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Nombre de usuario</th>
+            <th>Edad</th>
+            <th>Peso</th>
+            <th>Altura</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-alumno>
+        <tr>
+            <td>
+                <img  *ngIf="alumno?.foto"
+                src="{{url_backend}}api/usuarios/uploads/img/{{alumno.foto}}" alt="{{alumno.foto}}" class="img-thumbnail rounded"
+                style="width:64px; cursor: pointer;">
+                <img  *ngIf="!alumno?.foto"
+                    src="{{url_backend}}images/no_user.png" alt="Sin foto" class="img-thumbnail rounded"
+                    style="width:64px; cursor: pointer;">
+            </td>
+            <td>{{alumno.usuario.nombre}} {{alumno.usuario.apellido}}</td>
+            <td>{{alumno.usuario.username}}</td>
+            <td>{{alumno.edad}}</td>
+            <td>{{alumno.peso}}</td>
+            <td>{{alumno.altura}}</td>
+        </tr>
+    </ng-template>
+</p-table>

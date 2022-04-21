@@ -9,19 +9,21 @@ import { EjerciciosComponent } from '../shared/components/ejercicios/ejercicios.
 import { EditComponent } from './pages/edit/edit.component';
 import { AlumnosComponent } from './pages/alumnos/alumnos.component';
 import { InstructorComponent } from './pages/instructor/instructor.component';
+import { InstructorGuard } from './guards/instructor.guard';
+import { UsuarioGuard } from './guards/usuario.guard';
 
 
 const routes: Routes = [
   {
     path: '',component:LoggedComponent,
     children:[
-      {path:'home',component:HomeComponent},
+      {path:'home',component:HomeComponent,canActivate:[UsuarioGuard]},
       {path:'logout',component:LogoutComponent},
       {path:'profile',component:PerfilComponent},
       {path:'ejercicios',component:EjerciciosComponent},
       {path:'edit',component:EditComponent},
-      {path:'instructor/alumnos',component:AlumnosComponent},
-      {path:'instructor',component:InstructorComponent},
+      {path:'instructor/alumnos',component:AlumnosComponent,canActivate:[InstructorGuard]},
+      {path:'instructor',component:InstructorComponent,canActivate:[InstructorGuard]},
       {path:'**',redirectTo:'home'}
     ]
   }

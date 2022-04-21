@@ -91,4 +91,15 @@ export class UserService {
     return this.http.post(this.url_base+'usuarios/upload',formData,{headers:headers});
   }
   
+  getProfilesByInstructor(instructor:string){
+    const token = this.authService.token;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.get(this.url_base+'users/alumnos/'+instructor,{headers:headers})
+  }
+  
+
 }
